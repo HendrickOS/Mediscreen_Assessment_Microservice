@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 
 import com.project9.Mediscreen_Assessment_Microservice.domain.Assessment;
 import com.project9.Mediscreen_Assessment_Microservice.utils.StateConstants;
+import com.project9.Mediscreen_Note_Microservice.services.NoteService;
+import com.project9.Mediscreen_Patient_Microservice.services.PatientService;
 
 @Component
 public class AssessmentServiceImpl implements AssessmentService {

@@ -1,0 +1,112 @@
+{"properties": [
+  {
+    "name": "jwt",
+    "type": "java.lang.String",
+    "description": "A description for 'jwt'"
+  },
+  {
+    "name": "signingKey",
+    "type": "java.lang.String",
+    "description": "A description for 'signingKey'"
+  },
+  {
+    "name": "signingKey",
+    "type": "java.lang.String",
+    "description": "A description for 'signingKey'"
+  },
+  {
+    "name": "signingKey",
+    "type": "java.lang.String",
+    "description": "A description for 'signingKey'"
+  },
+  {
+    "name": "tokenValidity",
+    "type": "java.lang.String",
+    "description": "A description for 'tokenValidity'"
+  },
+  {
+    "name": "datasource",
+    "type": "java.lang.String",
+    "description": "A description for 'datasource'"
+  },
+  {
+    "name": "url",
+    "type": "java.lang.String",
+    "description": "A description for 'url'"
+  },
+  {
+    "name": "username",
+    "type": "java.lang.String",
+    "description": "A description for 'username'"
+  },
+  {
+    "name": "password",
+    "type": "java.lang.String",
+    "description": "A description for 'password'"
+  },
+  {
+    "name": "jpa",
+    "type": "java.lang.String",
+    "description": "A description for 'jpa'"
+  },
+  {
+    "name": "show-sql",
+    "type": "java.lang.String",
+    "description": "A description for 'show-sql'"
+  },
+  {
+    "name": "hibernate.ddl-auto",
+    "type": "java.lang.String",
+    "description": "A description for 'hibernate.ddl-auto'"
+  },
+  {
+    "name": "properties.hibernate.dialect",
+    "type": "java.lang.String",
+    "description": "A description for 'properties.hibernate.dialect'"
+  },
+  {
+    "name": "spring",
+    "type": "java.lang.String",
+    "description": "A description for 'spring'"
+  },
+  {
+    "name": "tokenValidit",
+    "type": "java.lang.String",
+    "description": "A description for 'tokenValidit'"
+  },
+  {
+    "name": "tokenValidit",
+    "type": "java.lang.String",
+    "description": "A description for 'tokenValidit'"
+  },
+  {
+    "name": "signingKey",
+    "type": "java.lang.String",
+    "description": "A description for 'signingKey'"
+  },
+  {
+    "name": "signingKey",
+    "type": "java.lang.String",
+    "description": "A description for 'signingKey'"
+  },
+  {
+    "name": "signingKey",
+    "type": "java.lang.String",
+    "description": "A description for 'signingKey'"
+  },
+  {
+    "name": "signingKey",
+    "type": "java.lang.String",
+    "description": "A description for 'signingKey'"
+  },
+  {
+    "name": "tokenValidit",
+    "type": "java.lang.String",
+    "description": "A description for 'tokenValidit'"
+  },
+  {
+    "name": "tokenValidit",
+    "type": "java.lang.String",
+    "description": "A description for 'tokenValidit'"
+  }
+]}
