@@ -1,7 +1,7 @@
 package com.project9.Mediscreen_Assessment_Microservice.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,8 +14,8 @@ public class AssessmentController {
 	@Autowired
 	AssessmentService assessmentService;
 
-	@GetMapping("/assessment")
-	public Assessment assessmentOfPatient(@RequestParam String familyName) {
+	@RequestMapping("/assessment")
+	public Assessment assessmentOfPatient(@RequestParam("familyName") String familyName) {
 		return assessmentService.assessmentByName(familyName);
 	}
 
