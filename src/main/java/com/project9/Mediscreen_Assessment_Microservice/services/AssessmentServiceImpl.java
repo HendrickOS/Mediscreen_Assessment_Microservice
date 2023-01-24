@@ -1,37 +1,50 @@
 package com.project9.Mediscreen_Assessment_Microservice.services;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.project9.Mediscreen_Assessment_Microservice.domain.Assessment;
 import com.project9.Mediscreen_Assessment_Microservice.utils.StateConstants;
-import com.project9.Mediscreen_Note_Microservice.services.NoteService;
-import com.project9.Mediscreen_Patient_Microservice.services.PatientService;
+import com.project9.Mediscreen_Note_Microservice.domain.Note;
+import com.project9.Mediscreen_Patient_Microservice.domain.Patient;
 
 @Component
 public class AssessmentServiceImpl implements AssessmentService {
 
-	@Autowired
-	NoteService noteService;
-	@Autowired
-	PatientService patientService;
+//	@Autowired
+//	NoteService noteService;
+//	@Autowired
+//	PatientService patientService;
 
 	@Override
-	public Assessment assessmentByName(String nameOfPatient) {
+	public Assessment assessmentOfPatient(Patient patient, List<Note> listOfNotes) {
 		Assessment assessment = new Assessment();
+		String nameOfPatient;
 		List<String> commentariesOfEachNotesOfPatient = new ArrayList<>();
 		int triggerWord = 0;
 		String stateOfPatient = StateConstants.NONE;
 		int ageOfPatient;
 		String genderOfPatient;
 
-		commentariesOfEachNotesOfPatient = noteService.commentariesOfEachNoteOfPatient(nameOfPatient);
-		ageOfPatient = patientService.ageOfPatient(nameOfPatient);
-		genderOfPatient = patientService.findByFullname(nameOfPatient).getGender();
+		/* On récupère le nom du patient */
+		nameOfPatient = patient.getFullname();
 
+		/* On récupère les commentaires de chacune des notes du patient */
+		for (Note note : listOfNotes) {
+			commentariesOfEachNotesOfPatient.add(note.getCommentary());
+		}
+
+		/* On récupère le genre du patient */
+		genderOfPatient = patient.getGender();
+
+		/*
+		 * On compte le nombre de mot clé présent dans chacun des commentaires
+		 * concernant le patient
+		 */
 		for (String commentary : commentariesOfEachNotesOfPatient) {
 			if (commentary.contains("Hémoglobine A1C")) {
 				triggerWord = triggerWord + 1;
@@ -68,6 +81,10 @@ public class AssessmentServiceImpl implements AssessmentService {
 			}
 		}
 
+		/* On récupère l'âge du patient */
+		ageOfPatient = Period.between(patient.getBirthdate().toLocalDate(), LocalDate.now()).getYears();
+
+		/* On donne l'état patient */
 		if (triggerWord == 0) {
 			stateOfPatient = StateConstants.NONE;
 		}
@@ -104,6 +121,7 @@ public class AssessmentServiceImpl implements AssessmentService {
 
 		}
 
+		/* On set toutes les informations dans un assessment */
 		assessment.setFamilyName(nameOfPatient);
 		assessment.setState(stateOfPatient);
 		assessment.setAge(ageOfPatient);
