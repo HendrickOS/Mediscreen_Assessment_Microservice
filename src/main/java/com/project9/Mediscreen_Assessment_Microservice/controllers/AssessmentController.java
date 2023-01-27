@@ -15,12 +15,6 @@ public class AssessmentController {
 	@Autowired
 	AssessmentService assessmentService;
 
-//	@GetMapping("/assessment")
-//	public Assessment assessmentOfPatient(@RequestParam("patient") Patient patient,
-//			@RequestParam("listOfNotes") List<Note> listOfNotes) {
-//		return assessmentService.assessmentOfPatient(patient, listOfNotes);
-//	}
-
 	@PostMapping("/assessment")
 	public Assessment assessmentOfPatient(@RequestBody PatientAssessment patientAssessment) {
 		return assessmentService.assessmentOfPatient(patientAssessment.getPatientBean(),
