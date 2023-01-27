@@ -23,7 +23,8 @@ public class AssessmentController {
 
 	@PostMapping("/assessment")
 	public Assessment assessmentOfPatient(@RequestBody PatientAssessment patientAssessment) {
-		return assessmentService.assessmentOfPatient(patientAssessment.getPatient(), patientAssessment.getNotes());
+		return assessmentService.assessmentOfPatient(patientAssessment.getPatientBean(),
+				patientAssessment.getListOfNotesBean());
 	}
 
 }

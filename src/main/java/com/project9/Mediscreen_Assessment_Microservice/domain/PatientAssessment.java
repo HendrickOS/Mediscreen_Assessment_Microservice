@@ -7,23 +7,23 @@ import com.project9.Mediscreen_Patient_Microservice.domain.Patient;
 
 public class PatientAssessment {
 
-	private Patient patient;
-	private List<Note> notes;
+	private Patient patientBean;
+	private List<Note> listOfNotesBean;
 
-	public Patient getPatient() {
-		return patient;
+	public Patient getPatientBean() {
+		return patientBean;
 	}
 
-	public void setPatient(Patient patient) {
-		this.patient = patient;
+	public void setPatientBean(Patient patientBean) {
+		this.patientBean = patientBean;
 	}
 
-	public List<Note> getNotes() {
-		return notes;
+	public List<Note> getListOfNotesBean() {
+		return listOfNotesBean;
 	}
 
-	public void setNotes(List<Note> notes) {
-		this.notes = notes;
+	public void setListOfNotesBean(List<Note> listOfNotesBean) {
+		this.listOfNotesBean = listOfNotesBean;
 	}
 
 }

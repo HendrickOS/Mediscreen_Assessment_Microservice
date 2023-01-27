@@ -58,12 +58,101 @@ public class AssessmentServiceTest {
 		note2.setCommentary("some notes");
 		Note note3 = new Note();
 		note3.setCommentary("some notes");
-		notes.addAll(List.of(note1, note2, note3));
+
+		notes.add(note1);
+		notes.add(note2);
+		notes.add(note3);
 
 		Assessment result = assessmentServiceUnderTest.assessmentOfPatient(givenMalePatient, notes);
 
 		assertThat(result.getFamilyName()).isEqualTo(givenMalePatient.getFullname());
 		assertThat(result.getState()).isEqualTo(StateConstants.NONE);
+	}
+
+	@Test
+	public void AssessmentBorderlineTest() {
+		Note note1 = new Note();
+		note1.setCommentary("some notes hémoglobine a1c");
+		Note note2 = new Note();
+		note2.setCommentary("some notes taille");
+		Note note3 = new Note();
+		note3.setCommentary("some notes");
+
+		notes.add(note1);
+		notes.add(note2);
+		notes.add(note3);
+
+		Assessment result = assessmentServiceUnderTest.assessmentOfPatient(givenMalePatient, notes);
+
+		assertThat(result.getFamilyName()).isEqualTo(givenMalePatient.getFullname());
+		assertThat(result.getState()).isEqualTo(StateConstants.BORDELINE);
+	}
+
+	@Test
+	public void AssessmentManInDangerMoreThan30yoTest() {
+		Note note1 = new Note();
+		note1.setCommentary("some notes hémoglobine a1c");
+		Note note2 = new Note();
+		note2.setCommentary("some notes taille");
+		Note note3 = new Note();
+		note3.setCommentary("some notes Vertige");
+
+		notes.add(note1);
+		notes.add(note2);
+		notes.add(note3);
+
+		Assessment result = assessmentServiceUnderTest.assessmentOfPatient(givenMalePatient, notes);
+
+		assertThat(result.getFamilyName()).isEqualTo(givenMalePatient.getFullname());
+		assertThat(result.getState()).isEqualTo(StateConstants.IN_DANGER);
+	}
+
+	@Test
+	public void AssessmentManInDangerLessThan30yoTest() {
+		when(patientServiceMocked.ageOfPatient(givenMalePatient.getFullname())).thenReturn(25);
+
+		Note note1 = new Note();
+		note1.setCommentary("some notes hémoglobine a1c");
+		Note note2 = new Note();
+		note2.setCommentary("some notes taille");
+		Note note3 = new Note();
+		note3.setCommentary("some notes Vertige");
+
+		notes.add(note1);
+		notes.add(note2);
+		notes.add(note3);
+
+		Assessment result = assessmentServiceUnderTest.assessmentOfPatient(givenMalePatient, notes);
+
+		assertThat(result.getFamilyName()).isEqualTo(givenMalePatient.getFullname());
+		assertThat(result.getState()).isEqualTo(StateConstants.IN_DANGER);
+	}
+
+	@Test
+	public void AssessmentManEarlyOnSetLess30yoTest() {
+		when(patientServiceMocked.ageOfPatient(givenMalePatient.getFullname())).thenReturn(25);
+
+		Note note1 = new Note();
+		note1.setCommentary("some notes hémoglobine a1c");
+		Note note2 = new Note();
+		note2.setCommentary("some notes taille");
+		Note note3 = new Note();
+		note3.setCommentary("some notes Vertige");
+		Note note4 = new Note();
+		note4.setCommentary("some notes rechute");
+		Note note5 = new Note();
+		note5.setCommentary("some notes reaction");
+
+		notes.add(note1);
+		notes.add(note2);
+		notes.add(note3);
+		notes.add(note4);
+		notes.add(note5);
+
+		Assessment result = assessmentServiceUnderTest.assessmentOfPatient(givenMalePatient, notes);
+
+		assertThat(result.getFamilyName()).isEqualTo(givenMalePatient.getFullname());
+		assertThat(result.getState()).isEqualTo(StateConstants.EARLY_ONSET);
 	}
 
 }
