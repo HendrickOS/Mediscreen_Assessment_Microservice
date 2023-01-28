@@ -87,7 +87,7 @@ public class AssessmentServiceTest {
 		Assessment result = assessmentServiceUnderTest.assessmentOfPatient(givenMalePatient, notes);
 
 		assertThat(result.getFamilyName()).isEqualTo(givenMalePatient.getLastname());
-		assertThat(result.getState()).isEqualTo(StateConstants.BORDELINE);
+		assertThat(result.getState()).isEqualTo(StateConstants.BORDERLINE);
 	}
 
 	@Test

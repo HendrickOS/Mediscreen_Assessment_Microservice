@@ -15,11 +15,6 @@ import com.project9.Mediscreen_Patient_Microservice.domain.Patient;
 @Component
 public class AssessmentServiceImpl implements AssessmentService {
 
-//	@Autowired
-//	NoteService noteService;
-//	@Autowired
-//	PatientService patientService;
-
 	@Override
 	public Assessment assessmentOfPatient(Patient patient, List<Note> listOfNotes) {
 		Assessment assessment = new Assessment();
@@ -89,12 +84,6 @@ public class AssessmentServiceImpl implements AssessmentService {
 			stateOfPatient = StateConstants.NONE;
 		}
 
-		if (triggerWord >= 2 && triggerWord < 6) {
-			if (ageOfPatient > 30) {
-				stateOfPatient = StateConstants.BORDELINE;
-			}
-		}
-
 		if (genderOfPatient.equals("F") && ageOfPatient < 30) {
 			if (triggerWord >= 4 && triggerWord < 7) {
 				stateOfPatient = StateConstants.IN_DANGER;
@@ -112,6 +101,9 @@ public class AssessmentServiceImpl implements AssessmentService {
 			}
 		}
 		if (ageOfPatient > 30) {
+			if (triggerWord >= 2 && triggerWord < 6) {
+				stateOfPatient = StateConstants.BORDERLINE;
+			}
 			if (triggerWord >= 6 && triggerWord < 8) {
 				stateOfPatient = StateConstants.IN_DANGER;
 			}
