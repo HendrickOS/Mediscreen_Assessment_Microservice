@@ -26,4 +26,13 @@ public class PatientAssessment {
 		this.listOfNotesBean = listOfNotesBean;
 	}
 
+	public PatientAssessment() {
+		super();
+	}
+
+	public PatientAssessment(Patient patientBean, List<Note> listOfNotesBean) {
+		super();
+		this.patientBean = patientBean;
+		this.listOfNotesBean = listOfNotesBean;
+	}
 }
