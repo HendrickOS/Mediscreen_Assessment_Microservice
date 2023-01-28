@@ -31,7 +31,7 @@ public class AssessmentServiceImpl implements AssessmentService {
 		String genderOfPatient;
 
 		/* On récupère le nom du patient */
-		nameOfPatient = patient.getFullname();
+		nameOfPatient = patient.getLastname();
 
 		/* On récupère les commentaires de chacune des notes du patient */
 		for (Note note : listOfNotes) {
