@@ -21,6 +21,7 @@ public class AssessmentServiceImpl implements AssessmentService {
 		String nameOfPatient;
 		List<String> commentariesOfEachNotesOfPatient = new ArrayList<>();
 		int triggerWord = 0;
+//		int totalTriggerWord = 0;
 		String stateOfPatient = StateConstants.NONE;
 		int ageOfPatient;
 		String genderOfPatient;
@@ -74,6 +75,7 @@ public class AssessmentServiceImpl implements AssessmentService {
 			if (commentary.contains("Anticorps")) {
 				triggerWord = triggerWord + 1;
 			}
+//			totalTriggerWord = totalTriggerWord + triggerWord;
 		}
 
 		/* On récupère l'âge du patient */
