@@ -21,67 +21,56 @@ public class AssessmentServiceImpl implements AssessmentService {
 		String nameOfPatient;
 		List<String> commentariesOfEachNotesOfPatient = new ArrayList<>();
 		int triggerWord = 0;
-//		int totalTriggerWord = 0;
 		String stateOfPatient = StateConstants.NONE;
 		int ageOfPatient;
 		String genderOfPatient;
 
-		/* On récupère le nom du patient */
 		nameOfPatient = patient.getLastname();
 
-		/* On récupère les commentaires de chacune des notes du patient */
 		for (Note note : listOfNotes) {
 			commentariesOfEachNotesOfPatient.add(note.getCommentary());
 		}
 
-		/* On récupère le genre du patient */
 		genderOfPatient = patient.getGender();
 
-		/*
-		 * On compte le nombre de mot clé présent dans chacun des commentaires
-		 * concernant le patient
-		 */
 		for (String commentary : commentariesOfEachNotesOfPatient) {
-			if (commentary.contains("Hémoglobine A1C")) {
+			if (commentary.contains("Hemoglobine A1C") || commentary.contains("hemoglobine a1c")) {
 				triggerWord = triggerWord + 1;
 			}
-			if (commentary.contains("Microalbumine")) {
+			if (commentary.contains("Microalbumine") || commentary.contains("microalbumine")) {
 				triggerWord = triggerWord + 1;
 			}
-			if (commentary.contains("Taille")) {
+			if (commentary.contains("Taille") || commentary.contains("taille")) {
 				triggerWord = triggerWord + 1;
 			}
-			if (commentary.contains("Poids")) {
+			if (commentary.contains("Poids") || commentary.contains("poids")) {
 				triggerWord = triggerWord + 1;
 			}
-			if (commentary.contains("Fumeur")) {
+			if (commentary.contains("Fumeur") || commentary.contains("fumeur")) {
 				triggerWord = triggerWord + 1;
 			}
-			if (commentary.contains("Anormal")) {
+			if (commentary.contains("Anormal") || commentary.contains("anormal")) {
 				triggerWord = triggerWord + 1;
 			}
-			if (commentary.contains("Cholestérol")) {
+			if (commentary.contains("Cholesterol") || commentary.contains("cholesterol")) {
 				triggerWord = triggerWord + 1;
 			}
-			if (commentary.contains("Vertige")) {
+			if (commentary.contains("Vertige") || commentary.contains("vertige")) {
 				triggerWord = triggerWord + 1;
 			}
-			if (commentary.contains("Rechute")) {
+			if (commentary.contains("Rechute") || commentary.contains("rechute")) {
 				triggerWord = triggerWord + 1;
 			}
-			if (commentary.contains("Réaction")) {
+			if (commentary.contains("Reaction") || commentary.contains("reaction")) {
 				triggerWord = triggerWord + 1;
 			}
-			if (commentary.contains("Anticorps")) {
+			if (commentary.contains("Anticorps") || commentary.contains("anticorps")) {
 				triggerWord = triggerWord + 1;
 			}
-//			totalTriggerWord = totalTriggerWord + triggerWord;
 		}
 
-		/* On récupère l'âge du patient */
 		ageOfPatient = Period.between(patient.getBirthdate().toLocalDate(), LocalDate.now()).getYears();
 
-		/* On donne l'état patient */
 		if (triggerWord == 0) {
 			stateOfPatient = StateConstants.NONE;
 		}
@@ -115,7 +104,6 @@ public class AssessmentServiceImpl implements AssessmentService {
 
 		}
 
-		/* On set toutes les informations dans un assessment */
 		assessment.setFamilyName(nameOfPatient);
 		assessment.setState(stateOfPatient);
 		assessment.setAge(ageOfPatient);
