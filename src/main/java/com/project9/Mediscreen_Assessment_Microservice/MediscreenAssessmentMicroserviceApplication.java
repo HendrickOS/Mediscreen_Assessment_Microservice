@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
-//@EnableMongoRepositories("com.project9.Mediscreen_Note_Microservice") // to activate MongoDB repositories
-//@ComponentScan("com.project9.Mediscreen_Note_Microservice")
-// to scan packages mentioned
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
 @SpringBootApplication
+@EnableSwagger2
 @EnableDiscoveryClient
 public class MediscreenAssessmentMicroserviceApplication {
 
