@@ -2,9 +2,6 @@ package com.project9.Mediscreen_Assessment_Microservice.domain;
 
 import java.util.List;
 
-import com.project9.Mediscreen_Note_Microservice.domain.Note;
-import com.project9.Mediscreen_Patient_Microservice.domain.Patient;
-
 public class PatientAssessment {
 
 	private Patient patientBean;
